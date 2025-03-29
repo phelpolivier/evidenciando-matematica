@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
