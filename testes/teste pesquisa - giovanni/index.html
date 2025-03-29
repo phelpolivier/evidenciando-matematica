@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidenciando Matemática</title>
+</head>
+<body>
+    <!--O PLANO DE FUNDO É INSERIDO NO CSS-->
+    <main>
+        <img src="images/Logo~2 (1).png" alt=""><!--Logo-->
+        <!--BARRA DE PESQUISA-->
+    </main>
+<style>
+    .recomendacao {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    .link-recomendacao {
+        margin-top: 10px;
+        display: block;
+        font-size: 16px;
+        color: #0066cc;
+        text-decoration: none;
+    }
+    .link-recomendacao:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+
+
+<!-- Barra de Pesquisa fiz aqui -->
+<input type="text" id="searchInput" placeholder="Digite sua pesquisa...">
+<button onclick="search()">Pesquisar</button>
+
+<!-- Área para mostrar recomendações aonde vai ter os links para mudar de pagina-->
+<div id="recomendacao" class="recomendacao" style="display:none;">
+    <p>Encontramos algumas páginas relacionadas à sua pesquisa:</p>
+    <a id="link1" class="link-recomendacao" href="#" target="_blank"></a>
+    <a id="link2" class="link-recomendacao" href="#" target="_blank"></a>
+</div>
+
+<script>
+    function search() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const recomendacaoDiv = document.getElementById('recomendacao');
+        const link1 = document.getElementById('link1');
+        const link2 = document.getElementById('link2');
+
+        // Limpa as recomendações anteriores quando pesquisa outra coisa
+        recomendacaoDiv.style.display = 'none';
+        link1.href = '#';
+        link1.innerText = '';
+        link2.href = '#';
+        link2.innerText = '';
+
+        // Condições para recomendação de páginas é aqui aonde tudo funciona de vdd
+        if (query === 'em13mat301') {
+            link1.href = 'matriz.html';
+            link1.innerText = 'Veja Matrizes - matriz.html';
+            link2.href = 'sistemaslineares.html';
+            link2.innerText = 'Veja Sistemas Lineares - SistemasLineares.html';
+            recomendacaoDiv.style.display = 'block';
+        } else if (query === 'em13mat305') {
+            link1.href = 'logaritmo.html';
+            link1.innerText = 'Veja Logaritmo - Logaritmo.html';
+            link2.href = 'funcaologaritmica.html';
+            link2.innerText = 'Veja Função Logarítmica - FunçãoLogaritmica.html';
+            recomendacaoDiv.style.display = 'block';
+        } else if (query === 'em13mat403') {
+            link1.href = 'potenciaraz.html';
+            link1.innerText = 'Veja Potência e Raiz - PotenciaRaiz.html';
+            link2.href = 'funcaoexponencial.html';
+            link2.innerText = 'Veja Função Exponencial - FunçãoExponencial.html';
+            recomendacaoDiv.style.display = 'block';
+        } else {
+            alert('Nenhuma recomendação encontrada para sua pesquisa.');
+        }
+    }
+</script>
