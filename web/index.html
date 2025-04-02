@@ -1,17 +1,79 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evidenciando Matemática</title>
+
+    <link rel="stylesheet" href="style/index.css">
+    
+    <title>Mapas Mentais de Matemática</title>
 </head>
 <body>
-    <!--O PLANO DE FUNDO É INSERIDO NO CSS-->
-    <main>
-        <img src="images/Logo~2 (1).png" alt=""><!--Logo-->
+    <img src="images/Logo~2 (1).png" alt=""><br>
+    <input type="text" id="search" placeholder="Digite um nome ou código..." onkeyup="searchItems()" onkeypress="handleEnter(event)">
+    <div class="gallery" id="gallery"></div>
 
-        <div class="gallery" id="gallery"></div><!--Barra de Pesquisa-->
-    
-    </main>
+    <script>
+        // Lista de itens com nome, código e link para redirecionamento
+        const items = [
+            { name: "Matriz - EM13MAT301", code: "301", link: "materias/EM13MAT301/matriz.html" },
+            { name: "Sistema Lineares - EM13MAT301", code: "301", link: "materias/EM13MAT301/sistemas-lineares.html" },
+            { name: "Funções Logaritmicas - EM13MAT305", code: "305", link: "materias/EM13MAT305/funcoes-logaritmicas.html" },
+            { name: "Logaritmos - EM13MAT305", code: "305", link: "materias/EM13MAT305/logaritmos.html" },
+            { name: "Função Exponencial - EM13MAT403", code: "403", link: "materias/EM13MAT403/funcao-exponencial.html"},
+            { name: "Potencia e Raiz - EM13MAT403", code: "403", link: "materias/EM13MAT403/potencia-e-raiz.html"}
+        ];
+
+        // Função para exibir as divs clicáveis na galeria
+        function displayItems(filteredItems) {
+            const gallery = document.getElementById("gallery");
+            gallery.innerHTML = ""; // Limpa a galeria antes de adicionar os itens
+            
+            // Só exibe itens se houver resultado na pesquisa
+            if (filteredItems.length > 0) {
+                filteredItems.forEach(item => {
+                    const divElement = document.createElement("div");
+                    divElement.classList.add("item"); // Adiciona a classe para estilização
+                    divElement.textContent = item.name; // Define o nome do item dentro da div
+                    divElement.onclick = () => window.location.href = item.link; // Adiciona o redirecionamento ao clicar
+                    gallery.appendChild(divElement); // Adiciona o item na galeria
+                });
+            }
+        }
+
+        // Função para filtrar os itens com base no que foi digitado
+        function searchItems() {
+            const query = document.getElementById("search").value.toLowerCase().trim(); // Captura e converte para minúsculas
+
+            // Se o campo de pesquisa estiver vazio, a galeria também fica vazia
+            if (query === "") {
+                displayItems([]); // Limpa a galeria
+                return;
+            }
+
+            const filteredItems = items.filter(item => 
+                item.name.toLowerCase().includes(query) || item.code.includes(query) 
+            );
+            displayItems(filteredItems); // Atualiza a galeria com os itens filtrados
+        }
+
+        // Função para redirecionar automaticamente se o usuário pressionar "Enter"
+        function handleEnter(event) {
+            if (event.key === "Enter") {
+                const query = document.getElementById("search").value.toLowerCase().trim();
+                const matchedItem = items.find(item => 
+                    item.name.toLowerCase().includes(query) || item.code.includes(query)
+                );
+
+                if (matchedItem) {
+                    window.location.href = matchedItem.link; // Redireciona para a página correspondente
+                } else if (query === "hello world") {
+                    window.location.href = "hello-world.html"; // Exemplo de redirecionamento especial
+                }
+            }
+        }
+
+        // Agora, a função `window.onload` não exibe os itens inicialmente, deixando a galeria vazia
+    </script>
 </body>
 </html>

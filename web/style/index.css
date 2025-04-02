@@ -1,7 +1,42 @@
 @charset "UTF-8";
 
+img {
+    margin-top: 240px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+body {
+    background-image: image-set("../images/fundo.png");
+    background-position: top center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+input {
+    padding: 10px;
+    width: 50%;
+    margin-bottom: 20px;
+}
 .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+.gallery .item {
+    width: 200px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.gallery .item:hover {
+    background-color: #ddd;
 }
