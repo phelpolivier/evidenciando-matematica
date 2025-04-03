@@ -6,7 +6,7 @@ img {
     text-align: center;
 }
 body {
-    background-image: image-set("../images/fundo.png");
+    background-image: image-set("../images/Fundo.png");
     background-position: top center;
     background-repeat: no-repeat;
     font-family: Arial, sans-serif;
