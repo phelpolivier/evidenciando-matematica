@@ -27,6 +27,6 @@ modal.addEventListener("click", (e) => {
 modalImg.addEventListener("click", (e) => {
     e.stopPropagation();
     zoomed = !zoomed;
-    modalImg.style.transform = zoomed ? "scale(2)" : "scale(1)";
+    modalImg.style.transform = zoomed ? "scale(1.8)" : "scale(1)";
     modalImg.style.cursor = zoomed ? "zoom-out" : "zoom-in";
 });
